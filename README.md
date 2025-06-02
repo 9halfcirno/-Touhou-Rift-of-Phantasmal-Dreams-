@@ -1,4 +1,4 @@
-#**東方幻夢鄉 ~Touhou_ Rift of Phantasmal Dreams~**
+#**東方幻夢鄉 \~Touhou_ Rift of Phantasmal Dreams\~**
 
 **画饼ing……**
 
