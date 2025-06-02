@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script src="lib/eruda.js"></script>
+	<script>
+		eruda.init();
+	</script>
+	<title>東方幻夢鄉 ~Touhou_ Rift of Phantasmal Dreams~</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, no-cache, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<link type="text/css" rel="stylesheet" href="main/_main.css">
+	<!--konva库-->
+	<script src="lib/konva.js" crossorigin></script>
+	<!--THREE相关库-->
+	<script src="lib/three.min.js"></script>
+	<script src="lib/three.OrbitControl.js"></script>
+	<script src="lib/three.stats.js"></script>
+	<!--TH对象-->
+	<script src="main/object/th.const.js"></script>
+	<script src="main/object/th.id.js"></script>
+	<script src="main/object/th.tool.js"></script>
+	<script src="main/object/th.define.js"></script>
+	<script src="main/object/th.default.js"></script>
+	<script src="main/object/th.resource.js"></script>
+
+	<!--TH类-->
+	<script src="main/class/th.base.js"></script>
+	<script src="main/class/th.texture.js"></script>
+	<script src="main/class/th.vector.js"></script>
+	<script src="main/class/th.map.js"></script>
+	<script src="main/class/th.other.js"></script>
+	<script src="main/class/th.entity.js"></script>
+	<!--游戏-->
+</head>
+
+<body>
+	<div id="beforeStartLoading">LOADING</div>
+	<div id="htmlgui">
+		<div id="debug">
+			<button id="up">up</button>
+			<button id="left">left</button>
+			<button id="down">down</button>
+			<button id="right">right</button>
+		</div>
+	</div>
+	<div id="game-output">
+		<div id="canvas-game"></div>
+		<div id="canvas-gui"></div>
+	</div>
+	<script src="main/init.js"></script>
+	<script id="th-program" src="main/_main.js"></script>
+	<script id="th-ui" src="main/ui.js"></script>
+</body>
+
+</html>
