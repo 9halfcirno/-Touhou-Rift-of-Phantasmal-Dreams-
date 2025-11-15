@@ -1,0 +1,10 @@
+{
+	"id": "hole",
+	"name": "洞",
+	"texture": "th:tile_hole",
+	"components": {
+		"th:height": 0.95,
+		"th:movement_speed": 0.95,
+		"th:moveable": true
+	}
+}

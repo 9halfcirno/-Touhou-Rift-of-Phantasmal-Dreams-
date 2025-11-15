@@ -1,0 +1,10 @@
+{
+	"id": "water",
+	"name": "水",
+	"texture": "th:tile_water",
+	"components": {
+		"th:height": 0.8,
+		"th:movement_speed": 0.8,
+		"th:moveable": true
+	}
+}

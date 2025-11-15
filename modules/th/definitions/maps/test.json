@@ -1,0 +1,26 @@
+{
+	"id": "test",
+	"map_type": "splicing",
+	"ground": {
+		"a": {
+			"texture": "th:map_test_a",
+			"pixelsPerUnit": 16,
+			"left": "b"
+		},
+		"b": {
+			"texture": "th:map_test_b",
+			"pixelsPerUnit": 16,
+			"right": "a"
+		}
+	},
+	"plants": [
+		{
+			"id": "th:grass",
+			"position": [1, 2.5]
+		},
+		{
+			"id": "th:tree",
+			"position": [4.3, 2.5]
+		}
+	]
+}

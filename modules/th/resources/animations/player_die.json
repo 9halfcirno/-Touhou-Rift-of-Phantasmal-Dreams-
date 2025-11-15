@@ -1,0 +1,31 @@
+{
+	"id": "die",
+	"loopMode": "once",
+	"variables": {
+		"dir": "target.faceDirection",
+		"name": "target.id"
+	},
+	"texture_sheet": "th:entity_${name}_die_${dir}",
+	"frames": [
+		{
+			"repeat": [10, 10],
+			"offset": [0, 0],
+			"time": 50
+		},
+		{
+			"repeat": [10, 10],
+			"offset": [0, 10],
+			"time": 50
+		},
+		{
+			"repeat": [10, 10],
+			"offset": [0, 20],
+			"time": 50
+		},
+		{
+			"repeat": [10, 10],
+			"offset": [0, 30],
+			"time": 50
+		}
+	]
+}

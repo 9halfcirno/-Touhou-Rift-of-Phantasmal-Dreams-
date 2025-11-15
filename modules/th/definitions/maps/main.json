@@ -1,0 +1,49 @@
+{
+	"id": "main",
+	"map_type": "tile",
+	"tiles_data": [
+		"bbbbbbbbbbbbbb",
+		"baaaaabbbbbbbb",
+		"bbabbbbbbbbbbb",
+		"bbbabbbbbbcbbb",
+		"bbbbabbbbbbbbb",
+		"baaaaabbbbbbbb",
+		"bbbbbbbbcbbbbb",
+		"bcbabbbbbbbbbb",
+		"bbbabbbbbbcbbb",
+		"bbbabbbbbbbbbb",
+		"babababbbbbbbb",
+		"bbaaabbbcbbbbb",
+		"bbbabbbbbbbbbb",
+		"bbbbbbbbbbbbbb",
+		"bcbbbbbbbbbbbb",
+		"bbbbbbbbcbbbbb",
+		"bbbbbbbbbbbbaa",
+		"bbcbbbbbbbbaaa",
+		"bbbbbbbbbbaaaa",
+		"bcbbbcbbbaaaaa",
+		"bbbbbbbbaaaaaa",
+		"bbbbbbbbaaaaaa",
+		"bbbcbbbaaaaaaa",
+		"bbbbbbbaaaaaaa",
+		"bbbbbbbaaaaaaa"
+	],
+	"tiles": {
+		"a": "th:water",
+		"b": "th:grass",
+		"c": "th:hole"
+	},
+	"plants_data": [
+		"         a   a",
+		"a   a  a a a ",
+		"  a    a a  a",
+		"a      a a   a ",
+		"     a  a a  a ",
+		"a       aa  aa  ",
+		"a      a   a a ",
+		"    a   a   a  "
+	],
+	"plants": {
+		"a": "th:grass"
+	}
+}

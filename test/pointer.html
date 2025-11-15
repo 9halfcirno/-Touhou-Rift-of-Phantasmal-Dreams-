@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PointerEvent 属性演示</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .interaction-area {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            border: 2px dashed #ccc;
+        }
+        .interaction-area.active {
+            border-color: #4CAF50;
+            background-color: #f0fff0;
+        }
+        .info-panel {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .property-group {
+            margin-bottom: 20px;
+        }
+        .property-group h3 {
+            margin-top: 0;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eee;
+            color: #333;
+        }
+        .property-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            padding: 5px;
+            border-radius: 4px;
+        }
+        .property-item:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .property-name {
+            font-weight: bold;
+            color: #555;
+        }
+        .property-value {
+            color: #2196F3;
+        }
+        .instructions {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .pointer-indicator {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: rgba(255, 0, 0, 0.7);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>PointerEvent 属性演示</h1>
+    
+    <div class="instructions">
+        <p>在下方区域使用鼠标、触摸或触控笔进行交互，查看 PointerEvent 的各种属性。</p>
+    </div>
+    
+    <div class="container">
+        <div class="interaction-area" id="interactionArea">
+            <div class="pointer-indicator" id="pointerIndicator"></div>
+            <p>在此区域进行交互</p>
+        </div>
+        
+        <div class="info-panel" id="infoPanel">
+            <div class="property-group">
+                <h3>PointerEvent 特有属性</h3>
+                <div id="pointerSpecificProps"></div>
+            </div>
+            
+            <div class="property-group">
+                <h3>MouseEvent 继承属性</h3>
+                <div id="mouseProps"></div>
+            </div>
+            
+            <div class="property-group">
+                <h3>UIEvent 继承属性</h3>
+                <div id="uiProps"></div>
+            </div>
+            
+            <div class="property-group">
+                <h3>Event 继承属性</h3>
+                <div id="eventProps"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const interactionArea = document.getElementById('interactionArea');
+        const pointerIndicator = document.getElementById('pointerIndicator');
+        const pointerSpecificProps = document.getElementById('pointerSpecificProps');
+        const mouseProps = document.getElementById('mouseProps');
+        const uiProps = document.getElementById('uiProps');
+        const eventProps = document.getElementById('eventProps');
+        
+        // 初始化属性显示
+        function initProperties() {
+            const pointerProperties = [
+                'pointerId', 'width', 'height', 'pressure', 'tangentialPressure',
+                'tiltX', 'tiltY', 'twist', 'pointerType', 'isPrimary'
+            ];
+            
+            const mouseProperties = [
+                'altKey', 'button', 'buttons', 'clientX', 'clientY', 'ctrlKey',
+                'metaKey', 'movementX', 'movementY', 'offsetX', 'offsetY',
+                'pageX', 'pageY', 'screenX', 'screenY', 'shiftKey', 'x', 'y'
+            ];
+            
+            const uiProperties = ['detail', 'view'];
+            const eventProperties = [
+                'bubbles', 'cancelable', 'composed', 'currentTarget', 
+                'defaultPrevented', 'eventPhase', 'target', 'timeStamp', 'type'
+            ];
+            
+            // 创建属性显示元素
+            createPropertyElements(pointerProperties, pointerSpecificProps);
+            createPropertyElements(mouseProperties, mouseProps);
+            createPropertyElements(uiProperties, uiProps);
+            createPropertyElements(eventProperties, eventProps);
+        }
+        
+        function createPropertyElements(properties, container) {
+            properties.forEach(prop => {
+                const item = document.createElement('div');
+                item.className = 'property-item';
+                
+                const nameSpan = document.createElement('span');
+                nameSpan.className = 'property-name';
+                nameSpan.textContent = prop;
+                
+                const valueSpan = document.createElement('span');
+                valueSpan.className = 'property-value';
+                valueSpan.id = `prop-${prop}`;
+                valueSpan.textContent = '-';
+                
+                item.appendChild(nameSpan);
+                item.appendChild(valueSpan);
+                container.appendChild(item);
+            });
+        }
+        
+        // 更新属性显示
+        function updateProperties(event) {
+            // PointerEvent 特有属性
+            updateProperty('pointerId', event.pointerId);
+            updateProperty('width', event.width);
+            updateProperty('height', event.height);
+            updateProperty('pressure', event.pressure);
+            updateProperty('tangentialPressure', event.tangentialPressure);
+            updateProperty('tiltX', event.tiltX);
+            updateProperty('tiltY', event.tiltY);
+            updateProperty('twist', event.twist);
+            updateProperty('pointerType', event.pointerType);
+            updateProperty('isPrimary', event.isPrimary);
+            
+            // MouseEvent 继承属性
+            updateProperty('altKey', event.altKey);
+            updateProperty('button', event.button);
+            updateProperty('buttons', event.buttons);
+            updateProperty('clientX', event.clientX);
+            updateProperty('clientY', event.clientY);
+            updateProperty('ctrlKey', event.ctrlKey);
+            updateProperty('metaKey', event.metaKey);
+            updateProperty('movementX', event.movementX);
+            updateProperty('movementY', event.movementY);
+            updateProperty('offsetX', event.offsetX);
+            updateProperty('offsetY', event.offsetY);
+            updateProperty('pageX', event.pageX);
+            updateProperty('pageY', event.pageY);
+            updateProperty('screenX', event.screenX);
+            updateProperty('screenY', event.screenY);
+            updateProperty('shiftKey', event.shiftKey);
+            updateProperty('x', event.x);
+            updateProperty('y', event.y);
+            
+            // UIEvent 继承属性
+            updateProperty('detail', event.detail);
+            updateProperty('view', event.view ? 'Window' : 'null');
+            
+            // Event 继承属性
+            updateProperty('bubbles', event.bubbles);
+            updateProperty('cancelable', event.cancelable);
+            updateProperty('composed', event.composed);
+            updateProperty('currentTarget', event.currentTarget ? event.currentTarget.tagName : 'null');
+            updateProperty('defaultPrevented', event.defaultPrevented);
+            updateProperty('eventPhase', getEventPhaseName(event.eventPhase));
+            updateProperty('target', event.target ? event.target.tagName : 'null');
+            updateProperty('timeStamp', event.timeStamp);
+            updateProperty('type', event.type);
+            
+            // 更新指针指示器位置
+            if (event.type.includes('move') || event.type.includes('down')) {
+                pointerIndicator.style.display = 'block';
+                pointerIndicator.style.left = `${event.offsetX}px`;
+                pointerIndicator.style.top = `${event.offsetY}px`;
+                
+                // 根据压力调整指示器大小
+                const size = 20 + (event.pressure * 30);
+                pointerIndicator.style.width = `${size}px`;
+                pointerIndicator.style.height = `${size}px`;
+            }
+            
+            if (event.type.includes('up') || event.type.includes('out')) {
+                pointerIndicator.style.display = 'none';
+            }
+        }
+        
+        function updateProperty(name, value) {
+            const element = document.getElementById(`prop-${name}`);
+            if (element) {
+                if (typeof value === 'boolean') {
+                    element.textContent = value ? 'true' : 'false';
+                } else if (value === null || value === undefined) {
+                    element.textContent = 'null';
+                } else {
+                    element.textContent = value;
+                }
+            }
+        }
+        
+        function getEventPhaseName(phase) {
+            switch(phase) {
+                case 0: return 'NONE';
+                case 1: return 'CAPTURING_PHASE';
+                case 2: return 'AT_TARGET';
+                case 3: return 'BUBBLING_PHASE';
+                default: return 'UNKNOWN';
+            }
+        }
+        
+        // 添加事件监听器
+        function addEventListeners() {
+            const events = [
+                'pointerdown', 'pointerup', 'pointermove', 
+                'pointerover', 'pointerout', 'pointercancel'
+            ];
+            
+            events.forEach(eventType => {
+                interactionArea.addEventListener(eventType, (e) => {
+                    updateProperties(e);
+                    
+                    if (eventType === 'pointerdown') {
+                        interactionArea.classList.add('active');
+                    } else if (eventType === 'pointerup' || eventType === 'pointerout') {
+                        interactionArea.classList.remove('active');
+                    }
+                });
+            });
+        }
+        
+        // 初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            initProperties();
+            addEventListeners();
+        });
+    </script>
+</body>
+</html>

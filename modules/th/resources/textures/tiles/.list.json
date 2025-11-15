@@ -1,0 +1,8 @@
+{
+	"tiles": {
+		"tile_water": "water",
+		"tile_grass": "grass",
+		"tile_hole": "hole",
+		"tile_null": ".null"
+	}
+}

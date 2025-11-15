@@ -1,0 +1,21 @@
+{
+	"id": "reimu",
+	"name": "灵梦",
+	"texture": "th:entity_reimu",
+	"component": {
+		"th:display.three.model": "th:entity_plane",
+		"th:display.three.texture": {
+			
+		},
+		"th:property.hitbox": [
+			0.8,
+			1.5,
+			0.8
+		],
+		"th:property.health": 5,
+		"th:property.power": 0,
+		"th:property.speed": 1,
+		
+		"th:behavior.can_control": true
+	}
+}

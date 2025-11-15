@@ -1,0 +1,13 @@
+{
+	"module_name": "東方幻夢鄉",
+	"description": "「東方幻夢鄉」核心模块",
+	"namespace": "th",
+	"module_id": "thropd",
+	"version": "0.0.1",
+	"dependencies": [],
+	"enable_features": [],
+	"options": {
+		"load_priority": 0,
+		"disabled_uninstall": true
+	}
+}

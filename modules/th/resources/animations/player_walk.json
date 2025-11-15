@@ -1,0 +1,27 @@
+{
+	"id": "walk",
+	"loopMode": "repeat",
+	"variables": {
+		"dir": "target.faceDirection",
+		"speed": "target.moveSpeed",
+		"name": "target.id"
+	},
+	"frames": [
+		{
+			"texture": "th:entity_${name}_walk_${dir}_1",
+			"time": "100 / ${speed}"
+		},
+		{
+			"texture": "th:entity_${name}_walk_${dir}_2",
+			"time": "100 / ${speed}"
+		},
+		{
+			"texture": "th:entity_${name}_walk_${dir}_3",
+			"time": "100 / ${speed}"
+		},
+		{
+			"texture": "th:entity_${name}_walk_${dir}_4",
+			"time": "100 / ${speed}"
+		}
+	]
+}

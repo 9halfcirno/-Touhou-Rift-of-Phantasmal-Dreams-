@@ -1,0 +1,6 @@
+{
+	"id": "grass",
+	"name": "草",
+	"texture": "th:plant_grass",
+	"components": []
+}

@@ -1,0 +1,10 @@
+{
+	"id": "grass",
+	"name": "草地",
+	"texture": "th:tile_grass",
+	"components": {
+		"th:height": 1,
+		"th:movement_speed": 1,
+		"th:moveable": true
+	}
+}

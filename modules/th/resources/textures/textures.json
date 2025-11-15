@@ -1,0 +1,16 @@
+{
+	"pixelsPerUnit": 16,
+	"textures": {
+		"entities": {
+			"reimu": "entities/reimu/reimu"
+		},
+		"tiles": {
+			"water": "tiles/water",
+			"grass": "tiles/grass",
+			"hole": "tiles/hole"
+		},
+		"plants": {
+			"grass": "plants/grass"
+		}
+	}
+}

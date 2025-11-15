@@ -1,0 +1,18 @@
+{
+	"id": "start_menu",
+	"actions": [
+		{
+			"commands": [
+				"key:S,s/down",
+				"key:S,s/down"
+			],
+			"event": "th:game_start"
+		},
+		{
+			"commands": [
+				"key:Q,q/down"
+			],
+			"event": "th:quit"
+		}
+	]
+}
